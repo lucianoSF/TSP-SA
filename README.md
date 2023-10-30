@@ -10,3 +10,20 @@ The instances used in this work, are adaptations of the instances found in this:
 Also for the otimization model, it was considered the formulation found in the follow:
 
 [https://math.stackexchange.com/questions/1957211/linear-programming-formulation-of-traveling-salesman-tsp-in-wikipedia](https://math.stackexchange.com/questions/1957211/linear-programming-formulation-of-traveling-salesman-tsp-in-wikipedia)
+
+## SA Convergence
+<table>
+  <tr>
+    <td><img src="plots/ar25.png"></td>
+    <td><img src="plots/ar30.png"></td>
+    <td><img src="plots/ar35.png"></td>
+  </tr>
+</table>
+
+## Comparison
+<table>
+  <tr>
+    <td><img src="plots/comparison.png"></td>
+  </tr>
+</table>
+
