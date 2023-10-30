@@ -1,10 +1,8 @@
 import json
 import random
+import time
 
-
-
-
-code = 'qa194'
+code = 'ar35'
 
 def read_distances(file_name='cidades/' + code + '.json'):
     
@@ -117,23 +115,23 @@ def SimulatedAnnealing(initial_solution, num_cities, distances, temperature):
         LIST_OF_SOLUTIONS.append(cost)
         
     record_solutions(solutions=LIST_OF_SOLUTIONS)
-    #print('Temperature: ', temperature) 
-    print(best_solution)
+
     return best_solution
         
 def record_solutions(solutions, code=code):
-        with open(code  + '_solution.csv', 'a') as file:
+        with open('saidas/SA/' + code  + '_solution.csv', 'a') as file:
             file.write('Solution\n')
             for item in solutions:
                 file.write(str(item) + '\n')
 if __name__ == '__main__':
     
+    start = time.time()
     
     EULER = 2.718281828459
     temperature = 1000
-    alpha = 0.95
-    iterations_each_temperature = 10
-    number_iterations_solution_is_not_improved = 1000
+    alpha = 0.98
+    iterations_each_temperature = 500
+    number_iterations_solution_is_not_improved = 100
 
     num_cities, distances = read_distances()
     
@@ -142,8 +140,10 @@ if __name__ == '__main__':
     print(initial_solution)
     
     final_solution = SimulatedAnnealing(initial_solution, num_cities, distances, temperature)
+    final = time.time()
     
-    print('Final Solution: ', final_solution, 'Cost: ', calculate_cost(final_solution, distances))
+    print('Final Solution: ', final_solution, '\nCost: ', calculate_cost(final_solution, distances))
+    print('Time: ', final-start)
     
     
             

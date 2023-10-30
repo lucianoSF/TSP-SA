@@ -1,8 +1,8 @@
 import json
 from docplex.mp.model import Model
+import time
 
-
-def read_distances(file_name='cidades/qa194.json'):
+def read_distances(file_name='cidades/ar35.json'):
     
     fp = open(file_name)
     distances = json.load(fp)
@@ -11,7 +11,7 @@ def read_distances(file_name='cidades/qa194.json'):
 
 
 if __name__ == '__main__':
-  
+    start = time.time()
     num_cities, distances = read_distances()
     
     mdl = Model(name='TSP', log_output=True)
@@ -52,13 +52,14 @@ if __name__ == '__main__':
 
               
     mdl.solve()
+    final = time.time()
     
     for item in key:
         if mdl.x[item].solution_value > 0:
             print("x{} -> {}".format(item, mdl.x[item].solution_value))
             
     print("FO: {}".format(mdl.solution.get_objective_value()))
-        
+    print('Time: ', final-start)    
         
         
         
